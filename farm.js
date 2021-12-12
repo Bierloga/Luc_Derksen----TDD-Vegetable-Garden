@@ -12,8 +12,21 @@ const getTotalYield = (item) => {
     return newArray.reduce(reducer)
 }
 
+const getCostsForCrop = (item) => {
+    const newArray = item.crops.map(plant => { return plant.crop.costPerPlant * plant.numCrops })
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return newArray.reduce(reducer)
+}
+
+const getRevenueForCrop = (item) => {
+    const newArray = item.crops.map(plant => { return plant.crop.price * plant.numCrops })
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return newArray.reduce(reducer)
+}
 module.exports = {
     getYieldForPlant,
     getYieldForCrop,
-    getTotalYield
+    getTotalYield,
+    getCostsForCrop,
+    getRevenueForCrop
 }
